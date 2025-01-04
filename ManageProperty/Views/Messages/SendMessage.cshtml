@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutTenant.cshtml";
+    ViewData["Title"] = "Send Message";
+    var managers = ViewBag.Managers as SelectList;
+}
+
+<h2>Send Message</h2>
+<a asp-action="ViewReceivedMessages" asp-controller="Messages">Inbox</a>
+<div>
+    <form asp-action="SendMessage" method="post">
+        <div class="form-group">
+            <label for="receiverId">Manager</label>
+            <select id="receiverId" name="receiverId" class="form-control" required>
+                <option value="">Select Manager</option>
+                @foreach (var manager in ViewBag.Managers)
+                {
+                    <option value="@manager.Value">@manager.Text</option>
+                }
+            </select>
+        </div>
+        <div class="form-group custom">
+            <label for="content">Message Content</label>
+            <textarea id="content" name="content" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+    <a asp-action="MainPage" asp-controller="Tenants">Main Menu</a>

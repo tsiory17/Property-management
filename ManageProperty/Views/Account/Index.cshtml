@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+    string selectedAccount = ViewBag.SelectedAccount;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Property</title>
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <form asp-action="Login" asp-controller="Account" method="post">
+        <div class="container">
+            <h1>Manage Property</h1>
+            <div class="account-selection">
+                <label for="account">Choose an account:</label>
+                <select id="account" name="account">
+                    @if (selectedAccount == "owner")
+                    {
+                        <option value="owner" selected>Owner</option>
+                    }
+                    else
+                    {
+                        <option value="owner">Owner</option>
+                    }
+                    @if (selectedAccount == "manager")
+                    {
+                        <option value="manager" selected>Manager</option>
+                    }
+                    else
+                    {
+                        <option value="manager">Manager</option>
+                    }
+                    @if (selectedAccount == "tenant")
+                    {
+                        <option value="tenant" selected>Tenant</option>
+                    }
+                    else
+                    {
+                        <option value="tenant">Tenant</option>
+                    }
+
+                </select>
+            </div>
+            <div class="login-field">
+                <input type="text" name="Email" placeholder="Email" id="email" required />
+                <input type="password" placeholder="Password" name="password" id="password" required />
+            </div>
+            <button class="login-btn" type="submit">Log In</button>
+            <a asp-action="Register" asp-controller="Tenants" class="signup"> <i>Sign up</i></a>
+        </div>
+    </form>
+</body>
+</html>

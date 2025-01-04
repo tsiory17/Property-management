@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ManageProperty.Models.MessageDetailsModel>
+
+@{
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";
+    ViewData["Title"] = "Sent Messages";
+}
+
+<h2>Sent Messages</h2>
+<a asp-action="ViewReceivedMessages" asp-controller="Messages" class="btn btn-primary">Back to Inbox</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Message ID</th>
+            <th>Receiver</th>
+            <th>Content</th>
+            <th>Sent At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MessageId</td>
+                <td>@item.ReceiverName</td>
+                <td>@item.Content</td>
+                <td>@item.SentAt</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,49 @@
+﻿@model ManageProperty.Models.ApartmentViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutTenant.cshtml";
+    ViewData["Title"] = "Apartment Details";
+}
+
+<h2>Apartment Details</h2>
+
+<table class="table">
+    <tr>
+        <th>Apartment ID</th>
+        <td>@Model.ApartmentId</td>
+    </tr>
+    <tr>
+        <th>Building ID</th>
+        <td>@Model.BuildingId</td>
+    </tr>
+    <tr>
+        <th>Number of Rooms</th>
+        <td>@Model.NumberOfRooms</td>
+    </tr>
+    <tr>
+        <th>Rent</th>
+        <td>@Model.Rent</td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>@Model.Status</td>
+    </tr>
+    <tr>
+        <th>Address</th>
+        <td>@Model.Address</td>
+    </tr>
+    <tr>
+        <th>City</th>
+        <td>@Model.City</td>
+    </tr>
+    <tr>
+        <th>Zip Code</th>
+        <td>@Model.ZipCode</td>
+    </tr>
+</table>
+
+
+<p>
+    <a asp-action="BookAppointment" asp-controller="Appointments" asp-route-buildingId="@Model.BuildingId">Book Appointment</a>
+    <a asp-action="Sort">Back to List</a>
+</p>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ManageProperty.Models.Apartment>
+@{
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";
+    ViewData["Title"] = "Search Apartments by Status";
+}
+
+<h1>Search Apartments by Status</h1>
+
+<form method="get" asp-action="SearchByStatus">
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" name="status" class="form-control" asp-items="ViewBag.StatusList">
+            <option value="">All</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">View</button>
+    <div>
+        <a asp-action="Create" asp-controller="Apartments">Add new Apartment</a>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BuildingId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().NumberOfRooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Rent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BuildingId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfRooms)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ApartmentId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ApartmentId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ApartmentId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

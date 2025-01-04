@@ -1,0 +1,125 @@
+﻿@{
+    Layout = null;
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Property - Home</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-XXXXXXXXXXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: antiquewhite;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+            .header .title {
+                text-align: center;
+            }
+
+            .header .start-btn {
+                margin-right: 20px;
+            }
+
+        .mission-statement {
+            margin: 40px auto;
+            text-align: center;
+            max-width: 800px;
+        }
+
+            .mission-statement img {
+                max-width: 100%;
+                height: auto;
+                margin-bottom: 20px;
+                margin-top: 0;
+            }
+
+            .mission-statement h2 {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .mission-statement .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 20px;
+                text-align: left;
+            }
+
+                .mission-statement .grid div {
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 8px;
+                    background-color: #f9f9f9;
+                }
+
+            .mission-statement div:first-child {
+                background-color: blue;
+                color: white;
+            }
+
+            .mission-statement div:nth-child(2) {
+                background-color: mediumvioletred;
+                color: white;
+            }
+
+            .mission-statement div:nth-child(3) {
+                background-color: green;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+                <h1 class="font-weight-bold">Manage Property</h1>
+                <p class="font-italic">Your go-to solution for property management</p>
+            </div>
+            <div class="start-btn">
+                <a asp-action="Index" asp-controller="Account" class="btn btn-primary">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="mission-statement">
+            <img src="~/image/homepage.jpg" alt="Property Management" />
+            <div class="grid">
+                <div>
+                    <h3 class="font-weight-bold">For Owners</h3>
+                    <p class="font-italic">
+                        Easily manage your properties, keep track of rent payments, and communicate with your tenants and managers.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-weight-bold">For Managers</h3>
+                    <p class="font-italic">
+                        Oversee multiple properties, handle maintenance requests, and ensure everything runs smoothly for both owners and tenants.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-weight-bold">For Tenants</h3>
+                    <p class="font-italic">
+                        Conveniently pay rent, submit maintenance requests, and stay connected with your property manager.
+                    </p>
+                </div>
+            </div>
+            <h2 class="font-weight-bold">Our Mission</h2>
+            <p class="font-italic">
+                At Manage Property, we strive to provide a seamless and efficient property management experience for all our users.
+                Whether you are an owner, manager, or tenant, our platform is designed to cater to your needs and ensure a smooth
+                and enjoyable experience. Our mission is to bring everyone together under one roof and create a harmonious living
+                and working environment. We are committed to delivering top-notch service and support to help you manage properties
+                effortlessly.
+            </p>
+        </div>
+    </div>
+</body>

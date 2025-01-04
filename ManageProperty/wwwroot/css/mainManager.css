@@ -1,0 +1,63 @@
+﻿.container-fluid {
+    background-color: mediumvioletred;
+    color: white;
+}
+
+.nav-link, .navbar-brand {
+    color: white;
+}
+
+.containerM {
+    margin-top: 10px;
+}
+
+    .containerM a {
+        background-color: mediumvioletred;
+    }
+
+
+.footer {
+    height: 50px;
+    background-color: mediumvioletred;
+}
+
+.containerFooter {
+    color: white;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.welcome {
+    padding-left: 50px;
+}
+
+.table td {
+    max-width: 200px; /* Adjust the width as needed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.logout {
+    margin-top: 1px;
+    background-color: red;
+    border: 1px solid;
+    box-shadow: 10px,10px,#000f;
+    border-radius: 15px;
+    text-align: center;
+}
+
+    .logout:hover {
+        background-color: white;
+        color: red;
+    }
+
+.custom {
+    width: 700px;
+}
+
+.message-content {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}

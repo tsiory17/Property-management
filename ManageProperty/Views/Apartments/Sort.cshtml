@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ManageProperty.Models.Apartment>
+
+@{
+    Layout = "~/Views/Shared/_LayoutTenant.cshtml";
+    ViewData["Title"] = "Apartments";
+}
+
+<h2>Apartments</h2>
+
+<form method="get" asp-action="Sort">
+    <div class="form-group">
+        <label for="sortOrder">Sort By:</label>
+        <select id="sortOrder" name="sortOrder" class="form-control" asp-items="ViewBag.SortOptions" style="width: 200px; height: 40px;" onchange="this.form.submit();">
+            <option value="">Select...</option>
+        </select>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ApartmentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuildingId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfRooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApartmentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BuildingId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfRooms)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a asp-action="DetailsTenant" asp-route-id="@item.ApartmentId">Details</a> |
+                    <a asp-action="BookAppointment" asp-controller="Appointments" asp-route-buildingId="@item.BuildingId" class="btn btn-primary">Book Appointment</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

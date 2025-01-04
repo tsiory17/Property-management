@@ -1,0 +1,15 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_LayoutOwner.cshtml";
+    var userName = ViewBag.UserName;
+}
+
+    <div class="MainPageContainer">
+        <h1 >Welcome, @userName!</h1>
+        <div class="button-container">
+            <a asp-action="Index" asp-controller="Managers" class="btn btn-primary">View Managers</a>
+            <a href="@Url.Action("Index", "Tenants")" class="btn btn-primary">View Tenants</a>
+        </div>
+    </div>
+

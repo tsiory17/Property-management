@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ManageProperty.Models.MessageDetailsModel>
+
+@{
+    Layout = "~/Views/Shared/_LayoutTenant.cshtml";
+
+    ViewData["Title"] = "Received Messages";
+}
+
+<h2>Received Messages</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Message ID</th>
+            <th>Sender</th>
+            <th>Content</th>
+            <th>Sent At</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MessageId</td>
+                <td>@item.SenderName</td>
+                <td>@item.Content</td>
+                <td>@item.SentAt</td>
+                <td>
+                    <a asp-action="ReplyForTenants" asp-route-originalMessageId="@item.MessageId" class="btn btn-secondary">Reply</a>
+                    <a asp-action="DeleteTenants" asp-route-id="@item.MessageId">Delete</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

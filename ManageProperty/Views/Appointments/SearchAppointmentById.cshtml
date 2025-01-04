@@ -1,0 +1,51 @@
+﻿@model ManageProperty.Models.AppointmentDetailsModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";
+    ViewData["Title"] = "Search Appointment by ID";
+}
+
+<h2>Search Appointment by ID</h2>
+
+<form asp-action="SearchAppointmentById" method="get">
+    <div class="form-group">
+        <label for="appointmentId">Appointment ID</label>
+        <input type="number" id="appointmentId" name="appointmentId" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@if (Model == null)
+{
+     <p>No appointment found with the provided ID.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Appointment ID</th>
+                <th>Schedule ID</th>
+                <th>Tenant Name</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.AppointmentId</td>
+                <td>@Model.ScheduleId</td>
+                <td>@Model.TenantName</td>
+                <td>@Model.Date</td>
+                <td>@Model.StartTime</td>
+                <td>@Model.EndTime</td>
+                <td>@Model.Status</td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+
+<a asp-action="MainPage" asp-controller="Managers">Back to Main Menu</a>

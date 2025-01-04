@@ -1,0 +1,92 @@
+﻿
+.container-fluid {
+    background-color: darkblue;
+    color: white;
+}
+
+.nav-link, .navbar-brand {
+    color: white;
+}
+
+.MainPageContainer {
+    height: 450px;
+}
+
+    .MainPageContainer h1 {
+        padding-top: 100px;
+        padding-left: 325px;
+    }
+
+
+    .MainPageContainer a {
+        width: 200px;
+        height: 50px;
+        margin-top: 100px;
+        margin-left: 200px;
+        padding-top: 10px;
+        text-align: center;
+        background-color: darkblue;
+        border: none;
+    }
+
+        .MainPageContainer a:hover {
+        }
+
+.footer {
+    height: 50px;
+    background-color: darkblue;
+}
+
+.containerFooter {
+    color: white;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+/*Style for the view manager */
+.search {
+    display: flex;
+    margin-top: 20px
+}
+
+    .search input {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .search button {
+        background-color: darkblue;
+    }
+
+#Create {
+    display: flex;
+    margin-top: 10px;
+}
+
+    #Create a {
+        display: inline;
+        height: 40px;
+        width: 100px;
+        padding-top: 5px;
+        text-align: center;
+        background-color: darkblue;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    #Create a {
+    }
+
+.logout {
+    margin-top: 1px;
+    background-color: red;
+    border: 1px solid;
+    box-shadow: 10px,10px,#000f;
+    border-radius: 15px;
+    text-align: center;
+}
+
+    .logout:hover {
+        background-color: white;
+        color: red;
+    }

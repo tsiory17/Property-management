@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";
+    var userName = ViewBag.UserName;
+
+}
+
+
+<body>
+    <div class="container">
+        <h1 class="welcome">Welcome, @userName!</h1>
+        <div class="button-container">
+            <div class="containerM">
+                <h3>Buildings</h3>
+                <a asp-action="Index" asp-controller="Buildings" class="btn btn-primary">View Buildings</a>
+            </div>
+
+            <div class="containerM">
+                <h3>Apartments</h3>
+                <a asp-action="SearchByStatus" asp-controller="Apartments" class="btn btn-primary">View Apartments</a>
+            </div>
+
+            <div class="containerM">
+                <h3>Appointments </h3>
+                <a asp-action="ManagerAppointments" asp-controller="Appointments" class="btn btn-primary">Manage Appointments</a>
+                <a asp-action="ShowApprovedAppointments" asp-controller="Appointments" class="btn btn-primary">My Appointments</a>
+                <a asp-action="Index" asp-controller="Schedules" class="btn btn-primary">Manage Schedule</a>
+            </div>
+            <div class="containerM">
+                <h3>Messages</h3>
+                <a asp-action="ViewReceivedMessages" asp-controller="Messages" class="btn btn-primary">Inbox</a>
+                <a asp-action="ViewSentMessages" asp-controller="Messages" class="btn btn-primary">Sentbox</a>
+
+            </div>
+        </div>
+    </div>
+</body>
+

@@ -1,0 +1,27 @@
+﻿@model ManageProperty.Models.Message
+
+@{
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";
+    ViewData["Title"] = "Reply to Message";
+    var originalMessage = ViewBag.OriginalMessage as ManageProperty.Models.Message;
+}
+
+<h2>Reply to Message</h2>
+<a asp-action="ViewReceivedMessages" asp-controller="Messages" class="btn btn-primary">Back to Inbox</a>
+
+
+<div class="custom">
+    <strong>Original Message from @originalMessage.SenderId:</strong>
+    <p class="message-content">@originalMessage.Content</p>
+    <p><small>Sent at @originalMessage.SentAt</small></p>
+</div>
+
+<form asp-action="Reply" method="post">
+    <input type="hidden" name="originalMessageId" value="@originalMessage.MessageId" />
+    <div class="form-group">
+        <label for="content">Message Content</label>
+        <textarea id="content" name="content" class="form-control" required>@ViewBag.Content</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Reply</button>
+</form>
+
