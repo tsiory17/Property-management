@@ -1,406 +1,363 @@
-# 
+# Manage Property Web Application 🏠
+
+## Table of Contents
+- [Technology](#technology-)
+- [Introduction](#introduction-)
+- [Preview](#preview-)
+- [Different types of Roles](#different-types-of-roles-)
+  - [1. Owner](#1-owner)
+    - [Description](#description-1)
+    - [Main Page](#main-page)
+    - [Owner Functions on Managers](#owner-functions-on-managers)
+      - [View List of Managers](#view-list-of-managers)
+      - [Create Manager](#create-manager)
+      - [Update Manager](#update-manager)
+      - [Delete Manager](#delete-manager)
+      - [Get Manager Details](#get-manager-details)
+      - [Search Manager](#search-manager)
+    - [Owner Functions on Tenants](#owner-functions-on-tenants)
+      - [View List of Tenants](#view-list-of-tenants)
+      - [Create Tenant](#create-tenant)
+      - [Update Tenant](#update-tenant)
+      - [Delete Tenant](#delete-tenant)
+      - [Get Tenant Details](#get-tenant-details)
+      - [Search Tenant](#search-tenant)
+  - [2. Manager](#2-manager)
+    - [Description](#description-2)
+    - [Main Page](#main-page-1)
+    - [Manager Functions on Buildings](#manager-functions-on-buildings)
+      - [View List of Buildings](#view-list-of-buildings)
+      - [Create Buildings](#create-buildings)
+      - [Update Buildings](#update-buildings)
+      - [Delete Buildings](#delete-buildings)
+      - [Get Buildings Details](#get-buildings-details)
+    - [Manager Functions on Apartments](#manager-functions-on-apartments)
+      - [View List of Apartments](#view-list-of-apartments)
+      - [Search Apartments by Status](#search-apartments-by-status)
+      - [Create Apartments](#create-apartments)
+      - [Update Apartments](#update-apartments)
+      - [Delete Apartments](#delete-apartments)
+      - [Get Apartments Details](#get-apartments-details)
+    - [Manager Functions on Appointments](#manager-functions-on-appointments)
+      - [Manage Appointments](#manage-appointments)
+      - [View Appointment and Search](#view-appointment-and-search)
+      - [Generate Schedule](#generate-schedule)
+    - [Manager Functions on Messages](#manager-functions-on-messages)
+      - [View Inbox](#view-inbox)
+      - [Reply to Message](#reply-to-message)
+      - [Delete Message](#delete-message)
+      - [View Sentbox](#view-sentbox)
+  - [3. Tenants](#3-tenants)
+    - [Description](#description-3)
+    - [Main Page](#main-page-2)
+    - [Tenant Functions on Apartments](#tenant-functions-on-apartments)
+      - [View List of Apartments](#view-list-of-apartments-1)
+      - [Sort Apartment by Room and Price](#sort-apartment-by-room-and-price)
+      - [View the Details of Specific Apartments](#view-the-details-of-specific-apartments)
+    - [Tenant Functions on Appointments](#tenant-functions-on-appointments)
+      - [View Appointments Request Status](#view-appointments-request-status)
+      - [Book Appointments with a Manager](#book-appointments-with-a-manager)
+    - [Tenant Functions on Messages](#tenant-functions-on-messages)
+      - [View Inbox](#view-inbox-1)
+      - [Reply to Messages](#reply-to-messages)
+      - [Send Messages to the Selected Manager](#send-messages-to-the-selected-manager)
+- [Database Relationship](#database-relationship)
 
-# Manage Property Web Application 
 
-Technology**<u>:</u>** \#C , ASP.net Core MVC , MSQL , Visual Studio
+      
 
-## Introduction
+## Technology 💻
+The application is built using a combination of the following technologies:
+- **C#**
+- **ASP.NET Core MVC**
+- **MS SQL**
+- **Visual Studio**
+- **HTML**
+- **CSS**
+- **JavaScript**
 
-**Property Management Application** is a simple and effective platform
-that helps property owners, managers, and clients work together easily.
-It brings all the key features they need into one place, making property
-management smooth and convenient.
+## Introduction 🏢
+**Property Management Application** is a simple and effective platform that helps property owners, managers, and clients work together easily. It brings all the key features they need into one place, making property management smooth and convenient.
 
-**Description**
+## Preview 👀
+The application opens up on a page which states the mission of the website:
 
-The application opens up on a page which states the mission of the
-website
+![Mission Page](./media/image1.png)
 
-<img src="./media/image1.png"
-style="width:5.99306in;height:5.08333in" />
+Once the user clicks the button "Get Started," it will redirect them to the login page:
 
-Once the user clicks the button get started, it will redirect them to
-the login page
+![Login Page](./media/image2.png)
 
-<img src="./media/image2.png"
-style="width:4.08333in;height:4.31944in" />
+The login page allows the user to choose their role. The dashboard and functionalities will differ depending on their specific roles:
 
-The login page allows the user to choose which their role. The dashboard
-and functionalities will be different depending on their specific roles
+![Role Selection](./media/image3.png)
 
-<img src="./media/image3.png" style="width:3.60417in;height:3.3125in" />
+## Different types of Roles 🚀
 
-**<u>Different types of Roles :</u>**
+## 1. Owner
 
-### 1-Owner
+#### Description
+An **Owner** in the application is responsible for overseeing their properties. They can manage **Managers** by assigning them to specific properties and monitoring their activities. Additionally, they have the ability to view and manage **Tenants**, ensuring smooth operations across all their properties.
 
-**<u>Description</u>**
+#### Main Page
+The main page shows the user in session and allows them to navigate the different functionalities of their dashboard. The user will have a top navigation bar and a logout button to return to the main menu:
 
-An **Owner** in the application is responsible for overseeing their
-properties. They can manage **Managers** by assigning them to specific
-properties and monitoring their activities. Additionally, they have the
-ability to view and manage **Tenants**, tenant details, ensuring smooth
-operations across all their properties.
+![Owner Main Page](./media/image4.png)
 
-**<u>Main Page:</u>**
+#### Owner Functions on Managers
 
-The main page shows the user in session and allows the user to navigate
-the different functionalities of his/her dashboard. The user will have a
-top navigation bar and a logout button to return to the main menu
+##### View List of Managers
+![View List of Managers](./media/image5.png)
 
-<img src="./media/image4.png"
-style="width:5.98611in;height:2.55556in" />
+##### Create Manager
+By filling in the required fields, the owner can enter a new manager in the system:
 
-**<u>Functions:</u>**
+![Create Manager](./media/image6.png)
 
-### Owner function on Managers
+If the owner creates a valid manager, the manager will be added as shown below:
 
-**<u>VIEW LIST OF MANAGERS</u>**
+![Manager Added](./media/image7.png)
 
-<img src="./media/image5.png"
-style="width:5.99306in;height:2.53472in" />
+If the model is not valid, error messages are displayed to indicate what went wrong:
 
-**<u>CREATE MANAGER:</u>**
+![Manager Error](./media/image8.png)
 
-By filling in the required field, the owner is able to enter a new
-manager in the system
+##### Update Manager
+![Update Manager](./media/image9.png)
 
-<img src="./media/image6.png"
-style="width:4.09722in;height:2.67767in" />
+If the update succeeds, the modified element will be shown. Otherwise, validation errors will be displayed for users to understand what went wrong.
 
-If the owner creates a valid manager, the manager will be added as shown
-below
+##### Delete Manager
+The owner can remove a manager from the system:
 
-<img src="./media/image7.png" style="width:5.99306in;height:2.0625in" />
+![Delete Manager](./media/image10.png)
 
-If the model is not valid , error messages are created to indicate the
-user what to do or what went wrong
+##### Get Manager Details
+The owner can get all the details associated with a specific manager:
 
-<img src="./media/image8.png"
-style="width:4.52778in;height:4.08234in" />
+![Manager Details](./media/image11.png)
 
-**<u>UPDATE MANAGER</u>**
+##### Search Manager
+The owner can search for a manager by their name.
 
-<img src="./media/image9.png" style="width:5.25in;height:3.75694in" />
+#### Owner Functions on Tenants
 
-If the update succeeds, the element modified will be shown, else , some
-validation errors will be displayed to the users for them to understand
-what went wrong.
+##### View List of Tenants
+![View List of Tenants](./media/image12.png)
 
-**<u>DELETE MANAGER:</u>**
+##### Create Tenant
+By filling in the required fields, the owner can enter a new tenant in the system:
 
-The owner can remove a manager from the system
+![Create Tenant](./media/image13.png)
 
-<img src="./media/image10.png"
-style="width:6.22793in;height:3.67361in" />
+If the owner creates a valid tenant, the tenant will be added to the system as shown below:
 
-**<u>GET MANAGER DETAILS</u>**
+![Tenant Added](./media/image14.png)
 
-The owner can get all the details associated to a specific manager
+If the model is not valid, error messages are displayed to indicate what went wrong:
 
-<img src="./media/image11.png" style="width:5.99306in;height:3.625in" />
+![Tenant Error](./media/image15.png)
 
-**<u>SEARCH MANAGER</u>**
+##### Update Tenant
+![Update Tenant](./media/image16.png)
 
-The owner is able to search a manager by their name
+If the update succeeds, the modified element will be shown. Otherwise, validation errors will be displayed for users to understand what went wrong.
 
-### Owner function on Tenants
+##### Delete Tenant
+The owner can remove a tenant from the system:
 
-**<u>VIEW LIST OF TENANTS:</u>**
+![Delete Tenant](./media/image17.png)
 
-<img src="./media/image12.png"
-style="width:5.99306in;height:2.54861in" />
+##### Get Tenant Details
+The owner can get all the details associated with a specific tenant:
 
-**<u>CREATE TENANT:</u>**
+![Tenant Details](./media/image18.png)
 
-By filling in the required field, the owner is able to enter a new
-tenant in the system
+##### Search Tenant
+The owner can search for a tenant by their name:
 
-<img src="./media/image13.png" style="width:5.99306in;height:4.75in" />
+![Search Tenant](./media/image19.png)
 
-If the owner creates a valid tenant, the tenant will be added to the
-system as shown below
+## 2. Manager
 
-<img src="./media/image14.png"
-style="width:5.98611in;height:2.70139in" />
+#### Description 
 
-If the model is not valid , error messages are created to indicate the
-user what to do or what went wrong
+A **Manager** in the application acts as a link between the owner and the tenants. They are responsible for handling buildings and apartments, managing properties, and ensuring smooth operations. Managers maintain communication with tenants through appointments and messages, keeping both owners and tenants satisfied.
 
-<img src="./media/image15.png" style="width:6in;height:4.36111in" />
+#### Main Page 
 
-**<u>UPDATE TENANT</u>**
+The main page shows the user in session and allows them to navigate the different functionalities of their dashboard. The user will have a top navigation bar and a logout button to return to the main menu:
 
-<img src="./media/image16.png"
-style="width:4.98611in;height:2.89583in" />If the update succeeds, the
-element modified will be shown, else , some validation errors will be
-displayed to the users for them to understand what went wrong.
+![Manager Main Page](./media/image20.png)
 
-**<u>DELETE TENANT:</u>**
+#### Manager Functions on Buildings
 
-The owner can remove a Tenant from the system
+##### View List of Buildings
+![View List of Buildings](./media/image21.png)
 
-<img src="./media/image17.png" style="width:5.99306in;height:4.25in" />
+##### Create Buildings
+By filling in the required fields, the manager can enter a new building in the system:
 
-**<u>GET TENANT DETAILS</u>**
+![Create Buildings](./media/image22.png)
 
-The owner can get all the details associated to a specific tenants
+If the manager creates a valid building, it will be added as shown below:
 
-<img src="./media/image18.png"
-style="width:5.21528in;height:3.06944in" />
+![Building Added](./media/image23.png)
 
-**<u>SEARCH TENANT</u>**
+If the model is not valid, error messages are displayed to indicate what went wrong:
 
-The owner is able to search a tenant by their name
+![Building Error](./media/image24.png)
 
-<img src="./media/image19.png"
-style="width:5.99306in;height:2.1875in" />
+##### Update Buildings
+![Update Buildings](./media/image25.png)
 
-### 2.Manager
+If the update succeeds, the modified element will be shown. Otherwise, validation errors will be displayed for users to understand what went wrong.
 
-**<u>Description:</u>**
+##### Delete Buildings
+The manager can remove a building from the system:
 
-A **Manager** in the application acts as a link between the owner and
-the tenants. They are responsible for handling buildings and apartments,
-managing those property. Managers help keep the properties running
-smoothly by staying in contact with the tenants through appointments and
-messages while keeping both owners and tenants satisfied.
+![Delete Buildings](./media/image26.png)
 
-**<u>Main Page:</u>**
+##### Get Buildings Details
+The manager can get all the details associated with a specific building:
 
-The main page shows the user in session and allows the user to navigate
-the different functionalities of his/her dashboard. The user will have a
-top navigation bar and a logout button to return to the main menu
+![Buildings Details](./media/image27.png)
 
-<img src="./media/image20.png"
-style="width:5.99306in;height:2.5625in" />
+#### Manager Functions on Apartments
 
-**<u>Functions:</u>**
+##### View List of Apartments
+![View List of Apartments](./media/image28.png)
 
-### Manager functions on buildings
+##### Search Apartments by Status
+![Search Apartments by Status](./media/image29.png)
 
-**<u>VIEW LIST OF BUILDINGS</u>**
+After selecting the status and clicking the view button, the list of apartments with the selected status will be shown. In the example below, the user chose the "occupied" status:
 
-<img src="./media/image21.png"
-style="width:5.99306in;height:2.3125in" />
+![Occupied Apartments](./media/image30.png)
 
-**<u>CREATE BUILDINGS:</u>**
+##### Create Apartments
+By filling in the required fields, the manager can enter a new apartment in the system:
 
-By filling in the required field, the manager is able to enter a new
-building in the system
+![Create Apartments](./media/image31.png)
 
-<img src="./media/image22.png"
-style="width:5.99306in;height:4.33333in" />
+If the manager creates a valid apartment, it will be added as shown below:
 
-If the manager creates a valid buildings, the builing will be added as
-shown below
+![Apartment Added](./media/image32.png)
 
-<img src="./media/image23.png"
-style="width:5.99306in;height:2.90972in" />
+If the model is not valid, error messages are displayed to indicate what went wrong:
 
-If the model is not valid , error messages are created to indicate the
-user what to do or what went wrong
+![Apartment Error](./media/image33.png)
 
-<img src="./media/image24.png"
-style="width:5.99306in;height:2.70139in" />
+##### Update Apartments
+![Update Apartments](./media/image34.png)
 
-**<u>UPDATE BUILDINGS</u>**
+If the update succeeds, the modified element will be shown. Otherwise, validation errors will be displayed for users to understand what went wrong.
 
-<img src="./media/image25.png"
-style="width:5.99306in;height:2.72917in" />
+##### Delete Apartments
+The manager can remove an apartment from the system:
 
-If the update succeeds, the element modified will be shown else, some
-validation errors will be displayed to the users for them to understand
-what went wrong.
+![Delete Apartments](./media/image35.png)
 
-**<u>DELETE BUILDINGS:</u>**
+##### Get Apartments Details
+The manager can get all the details associated with a specific apartment:
 
-The manager can remove a buildings from the system
+![Apartments Details](./media/image36.png)
 
-<img src="./media/image26.png" style="width:5.99306in;height:4.125in" />
+#### Manager Functions on Appointments
 
-**<u>GET BUILDINGS DETAILS</u>**
+##### Manage Appointments
+The manager can reject or accept any received appointment request from the tenant:
 
-The managers can get all the details associated to a specific building
+![Manage Appointments](./media/image37.png)
 
-<img src="./media/image27.png" style="width:6in;height:3.18056in" />
+##### View Appointment and Search
+The manager can view all their appointments and search for them by ID:
 
-### b. Manager functions on apartments
+![View Appointment](./media/image38.png)
 
-**<u>VIEW LIST OF APARTMENTS</u>**
+##### Generate Schedule
+The system allows the manager to generate a schedule for tenants to request appointments:
 
-<img src="./media/image28.png"
-style="width:5.99306in;height:2.60417in" />
+![Generate Schedule](./media/image39.png)
 
-**SEARCH APARTMENTS BY STATUS**
+#### Manager functions on Messages
 
-<img src="./media/image29.png"
-style="width:5.98611in;height:2.46528in" />
+#### View Inbox
 
-After selecting the status and the button view, the list of the
-apartments with the status selected will be shown in the example below
-the user chose the “occupied ” status
+The manager can view their message inbox.
 
-<img src="./media/image30.png"
-style="width:5.99306in;height:2.54861in" />
+![View Inbox](./media/image40.png)
 
-**<u>CREATE APARTMENTS:</u>**
+#### Reply to message
 
-By filling in the required field, the manager is able to enter a new
-apartment in the system
+The manager can reply to received messages.
 
-<img src="./media/image31.png" style="width:6in;height:4.09722in" />
+![Reply to Message](./media/image41.png)
 
-If the manager creates a valid apartment, the apartment will be added as
-shown below
+#### Delete Message
 
-<img src="./media/image32.png"
-style="width:5.99306in;height:2.90278in" />
+The manager can delete messages.
 
-If the model is not valid, error messages are created to indicate the
-user what to do or what went wrong
+![Delete Message](./media/image42.png)
 
-<img src="./media/image33.png" style="width:6in;height:5.31944in" />
+#### View Sentbox
 
-**<u>UPDATE APARTMENTS</u>**
+The manager can view sent messages.
 
-<img src="./media/image34.png"
-style="width:5.99306in;height:4.28472in" />
+![View Sentbox](./media/image43.png)
 
-If the update succeeds, the element modified will be shown else, some
-validation errors will be displayed to the users for them to understand
-what went wrong.
+## 3. Tenants
 
-**<u>DELETE APARTMENTS:</u>**
+### Description
 
-The manager can remove apartments from the system
+A **Tenant** in the application is a client who rents a property. They can view property details, make appointments, and communicate with the manager. The application provides tenants with a convenient way to manage their rental experience.
 
-<img src="./media/image35.png"
-style="width:5.99306in;height:5.29167in" />
+### Main Page
 
-**<u>GET APARTMENTS DETAILS</u>**
+The main page shows the user in session and allows the user to navigate the different functionalities of their dashboard. The user will have a top navigation bar and a logout button to return to the main menu.
 
-The managers can get all the details associated to a specific building
+![Tenant Main Page](./media/image44.png)
 
-<img src="./media/image36.png"
-style="width:5.38194in;height:5.50694in" />
-
-### c. Manager functions on appointments
-
-**<u>MANAGE APPOINTMENTS:</u>**
-
-The manager can reject or accept any received appointment request from
-the tenant
-
-<img src="./media/image37.png"
-style="width:5.72222in;height:2.82639in" />
-
-VIEW APPARTMENT AND SEARCH
-
-The manager can view all his appointment and search for them by id
-
-<img src="./media/image38.png" style="width:6in;height:2.36806in" />
-
-**<u>GENERATE SCHEDULE</u>**
-
-The system allows the manager to generate schedule for the tenant to
-request appointment
-
-<img src="./media/image39.png"
-style="width:5.99306in;height:2.71528in" />
-
-### d. Manager functions on Messages
-
-**<u>VIEW INBOX</u>**
-
-The manager can view his message inbox <img src="./media/image40.png"
-style="width:5.99306in;height:2.45139in" />
-
-**<u>REPLY TO MESSAGE</u>**
-
-The manager can reply to the received messages
-
-<img src="./media/image41.png"
-style="width:5.98611in;height:3.03472in" />
-
-**<u>DELETE MESSAGE</u>**
-
-The manager can delete messages
-
-<img src="./media/image42.png" style="width:6in;height:5.03472in" />
-
-**<u>VIEW SENTBOX</u>**
-
-The manager can view the message sent
-
-<img src="./media/image43.png"
-style="width:5.98611in;height:3.00694in" />
-
-### 3. Tenants
-
-**<u>Description</u>**
-
-A **Tenant** in the application is a client who rents a property. They
-can view property details, make appointments and communicate with the
-manager. The application provides tenants with a convenient way to
-manage their rental experience.
-
-**<u>Main Page :</u>**
-
-The main page shows the user in session and allows the user to navigate
-the different functionalities of his/her dashboard. The user will have a
-top navigation bar and a logout button to return to the main menu
-
-<img src="./media/image44.png"
-style="width:5.98611in;height:2.57639in" />
-
-**<u>Functions:</u>**
+### Functions:
 
 ### Tenant functions on apartments
 
-**<u>VIEW LIST OF APARTMENTS</u>**
+#### View List of apartments
 
-<img src="./media/image45.png"
-style="width:5.99306in;height:2.58333in" />
+![View List of Apartments](./media/image45.png)
 
-**<u>SORT APPARTMENT BY ROOM AND PRICE</u>**
+#### Sort Apartment by Room and Price
 
-<img src="./media/image46.png"
-style="width:5.98611in;height:2.56944in" />
+![Sort Apartment by Room and Price](./media/image46.png)
 
-**<u>VIEW THE DETAILS OF SPECIFIC APARTMENTS</u>**
+#### View the Details of Specific Apartments
 
-<img src="./media/image47.png"
-style="width:6.00694in;height:2.79861in" />
+![View the Details of Specific Apartments](./media/image47.png)
 
 ### Tenant functions on appointments
 
-**<u>VIEW APPOINTMENTS REQUEST STATUS</u>**
+#### View Appointments Request Status
 
-<img src="./media/image48.png"
-style="width:5.98611in;height:2.53472in" />
+![View Appointments Request Status](./media/image48.png)
 
-**<u>BOOK APPPOINTMENTS WITH A MANAGER</u>**
+#### Book Appointments with a Manager
 
-<img src="./media/image49.png"
-style="width:5.99306in;height:2.64583in" />
+![Book Appointments with a Manager](./media/image49.png)
 
 ### Tenant functions on Messages
 
-**<u>VIEW INBOX</u>**
+#### View Inbox
 
-<img src="./media/image50.png"
-style="width:5.99306in;height:2.54861in" />
+![View Inbox](./media/image50.png)
 
-**<u>REPLY TO MESSAGES</u>**
+#### Reply to Messages
 
-<img src="./media/image51.png"
-style="width:5.98611in;height:2.52083in" />
+![Reply to Messages](./media/image51.png)
 
-**<u>SEND MESSAGES TO THE SELECTED MANAGER</u>**
-<img src="./media/image52.png" style="width:6in;height:2.59028in" />
+#### Send Messages to the Selected Manager
 
-Database relationship:
+![Send Messages to the Selected Manager](./media/image52.png)
 
-<img src="./media/image53.png"
-style="width:5.99306in;height:3.42361in" />
+## Database relationship
+
+![Database Relationship](./media/image53.png)
