@@ -1,4 +1,3 @@
-*.cs linguist-language=C#
 *.html linguist-language=HTML
 *.css linguist-vendored
 *.html linguist-vendored
