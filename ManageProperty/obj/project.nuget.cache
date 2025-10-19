@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9HQq9dL9EYc=",
+  "dgSpecHash": "N2/OMHDLE+Y=",
   "success": true,
-  "projectFilePath": "C:\\webS5\\ManageProperty\\ManageProperty\\ManageProperty.csproj",
+  "projectFilePath": "C:\\Users\\tsior\\OneDrive\\Desktop\\Portfolio\\Property-management\\ManageProperty\\ManageProperty.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tsior\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\tsior\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

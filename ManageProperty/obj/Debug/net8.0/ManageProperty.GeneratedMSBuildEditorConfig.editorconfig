@@ -17,327 +17,329 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ManageProperty
 build_property.RootNamespace = ManageProperty
-build_property.ProjectDir = C:\webS5\ManageProperty\ManageProperty\
+build_property.ProjectDir = C:\Users\tsior\OneDrive\Desktop\Portfolio\Property-management\ManageProperty\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\webS5\ManageProperty\ManageProperty
+build_property.MSBuildProjectDirectory = C:\Users\tsior\OneDrive\Desktop\Portfolio\Property-management\ManageProperty
 build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Account/Index.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Account/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Apartments/Create.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Apartments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBhcnRtZW50c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Apartments/Delete.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Apartments/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBhcnRtZW50c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Apartments/Details.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Apartments/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBhcnRtZW50c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Apartments/DetailsTenant.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Apartments/DetailsTenant.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBhcnRtZW50c1xEZXRhaWxzVGVuYW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Apartments/Edit.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Apartments/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBhcnRtZW50c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Apartments/Index.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Apartments/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBhcnRtZW50c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Apartments/IndexTenant.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Apartments/IndexTenant.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBhcnRtZW50c1xJbmRleFRlbmFudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Apartments/SearchByStatus.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Apartments/SearchByStatus.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBhcnRtZW50c1xTZWFyY2hCeVN0YXR1cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Apartments/Sort.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Apartments/Sort.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBhcnRtZW50c1xTb3J0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Appointments/BookAppointment.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Appointments/BookAppointment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXEJvb2tBcHBvaW50bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Appointments/Create.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Appointments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Appointments/Delete.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Appointments/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Appointments/Details.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Appointments/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Appointments/Edit.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Appointments/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Appointments/Index.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Appointments/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Appointments/ManagerAppointments.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Appointments/ManagerAppointments.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXE1hbmFnZXJBcHBvaW50bWVudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Appointments/SearchAppointmentById.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Appointments/SearchAppointmentById.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXFNlYXJjaEFwcG9pbnRtZW50QnlJZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Appointments/ShowApprovedAppointments.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Appointments/ShowApprovedAppointments.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXFNob3dBcHByb3ZlZEFwcG9pbnRtZW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Buildings/Create.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Buildings/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVpbGRpbmdzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Buildings/Delete.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Buildings/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVpbGRpbmdzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Buildings/Details.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Buildings/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVpbGRpbmdzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Buildings/Edit.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Buildings/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVpbGRpbmdzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Buildings/Index.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Buildings/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVpbGRpbmdzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Home/Index.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Home/Privacy.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Managers/Create.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Managers/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Managers/Delete.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Managers/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlcnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Managers/Details.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Managers/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Managers/Edit.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Managers/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Managers/Index.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Managers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Managers/MainPage.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Managers/MainPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlcnNcTWFpblBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Managers/Search.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Managers/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlcnNcU2VhcmNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/Create.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/Delete.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/DeleteTenants.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/DeleteTenants.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcRGVsZXRlVGVuYW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/Details.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/DetailsTenants.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/DetailsTenants.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcRGV0YWlsc1RlbmFudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/Edit.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/Index.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/Reply.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/Reply.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcUmVwbHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/ReplyForTenants.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/ReplyForTenants.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcUmVwbHlGb3JUZW5hbnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/SendMessage.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/SendMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcU2VuZE1lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/ViewReceivedMessages.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/ViewReceivedMessages.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcVmlld1JlY2VpdmVkTWVzc2FnZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/ViewReceivedMessagesForTenants.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/ViewReceivedMessagesForTenants.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcVmlld1JlY2VpdmVkTWVzc2FnZXNGb3JUZW5hbnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Messages/ViewSentMessages.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Messages/ViewSentMessages.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZXNcVmlld1NlbnRNZXNzYWdlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Owners/Create.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Owners/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Owners/Delete.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Owners/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Owners/Details.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Owners/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Owners/Edit.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Owners/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Owners/Index.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Owners/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Owners/MainPage.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Owners/MainPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJzXE1haW5QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Roles/Create.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Roles/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Roles/Delete.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Roles/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Roles/Details.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Roles/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Roles/Edit.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Roles/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Roles/Index.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Roles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Schedules/Create.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Schedules/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Schedules/Delete.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Schedules/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Schedules/Details.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Schedules/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Schedules/Edit.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Schedules/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Schedules/GenerateSchedules.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Schedules/GenerateSchedules.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVzXEdlbmVyYXRlU2NoZWR1bGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Schedules/Index.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Schedules/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Shared/Error.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Shared/_LayoutManager.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Shared/_LayoutManager.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRNYW5hZ2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Shared/_LayoutOwner.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Shared/_LayoutOwner.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRPd25lci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Shared/_LayoutTenant.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Shared/_LayoutTenant.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRUZW5hbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Tenants/Create.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Tenants/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVuYW50c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Tenants/Delete.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Tenants/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVuYW50c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Tenants/Details.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Tenants/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVuYW50c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Tenants/Edit.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Tenants/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVuYW50c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Tenants/Index.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Tenants/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVuYW50c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Tenants/MainPage.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Tenants/MainPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVuYW50c1xNYWluUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Tenants/Register.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Tenants/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVuYW50c1xSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Tenants/Search.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Tenants/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVuYW50c1xTZWFyY2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/_ViewImports.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/_ViewStart.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/webS5/ManageProperty/ManageProperty/Views/Shared/_Layout.cshtml]
+[C:/Users/tsior/OneDrive/Desktop/Portfolio/Property-management/ManageProperty/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-wl9fojn322
