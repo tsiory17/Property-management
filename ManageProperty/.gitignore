@@ -1,0 +1,100 @@
+## Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## IDE and user-specific files
+.vscode/
+.idea/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## ASP.NET temporary files
+ScaffoldingReadMe.txt
+project.lock.json
+project.fragment.lock.json
+
+## Client-side assets
+wwwroot/lib/
+node_modules/
+dist/
+out/
+
+## Publish output
+*.publishsettings
+*.pubxml
+*.pubxml.user
+*.azurePubxml
+AppPackages/
+BundleArtifacts/
+PublishScripts/
+
+## NuGet packages
+*.nupkg
+**/packages/*
+!**/packages/build/
+*.snupkg
+
+## Databases
+*.mdf
+*.ldf
+*.ndf
+
+## Logs and temp
+*.log
+*.tmp
+*.bak
+*.tlog
+*.svclog
+
+## Secrets and configs
+appsettings.json
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+## OS junk
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+## Backup & cache
+*.cache
+*.swp
+*.orig
+*.dbmdl
+*.psess
+*.vsp
+*.pdb
+*.pidb
+*.svclog
+*.scc
+
+## Tests
+TestResult*/
+*.VisualState.xml
+*.coverage
+*.coveragexml
+
+## Rider & Resharper
+.idea/
+*.iml
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+## Docker
+**/docker-compose.override.yml
+**/docker-compose.vs.debug.yml
+**/docker-compose.vs.release.yml
+
+## Temporary folders
+bin/
+obj/
+tmp/
+temp/
