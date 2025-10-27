@@ -286,7 +286,7 @@ namespace ManageProperty.Controllers
 
                 _context.Update(appointment);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(ManagerAppointments), new { managerId = schedule.ManagerId });
+                return RedirectToAction(nameof(ManagerAppointments), new { managerId = schedule?.ManagerId });
             }
             return View(appointment);
         }
