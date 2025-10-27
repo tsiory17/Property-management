@@ -16,4 +16,7 @@ public partial class Apartment
     public double Rent { get; set; }
 
     public string Status { get; set; } = null!;
+    //Collection of images 
+    public ICollection<ApartmentImage> ApartmentImages { get; set; } = new List<ApartmentImage>();
+    public Building Building { get; set; } //Navigation Link 
 }

@@ -1,5 +1,6 @@
 using ManageProperty.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Options;
 
 namespace ManageProperty
@@ -11,7 +12,7 @@ namespace ManageProperty
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            var connection = builder.Configuration.GetConnectionString("Db");
+            var connection = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<EstateDbContext>(options => options.UseSqlServer(connection));
             builder.Services.AddControllersWithViews();
 
@@ -23,8 +24,20 @@ namespace ManageProperty
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+            //Add Cors 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReact", builder =>
+                {
+                    builder.WithOrigins("http://localhost:5173")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
 
             var app = builder.Build();
+
+            app.UseCors("AllowReact");
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -47,6 +60,25 @@ namespace ManageProperty
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            //Serve the react build files 
+            var appPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/app");
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(appPath),
+                RequestPath = "/app"
+            });
+
+            //React client side routing fallback
+            app.MapFallback(context =>
+            {
+                if (context.Request.Path.StartsWithSegments("/app"))
+                {
+                    context.Response.ContentType = "text/html";
+                    return context.Response.SendFileAsync(Path.Combine(appPath, "index.html"));
+                }
+                return Task.CompletedTask;
+            });
 
             app.Run();
         }

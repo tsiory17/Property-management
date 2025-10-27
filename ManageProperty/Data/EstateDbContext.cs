@@ -41,6 +41,7 @@ public partial class EstateDbContext : DbContext
     public DbSet<Apartment> Apartments { get; set; } = default!;
 
     public DbSet<Role> Roles { get; set; } = default!;
+    public DbSet<ApartmentImage> ApartmentImages { get; set; } = default!;
 
     public virtual DbSet<Message> Messages { get; set; }
     public virtual DbSet<Schedule> Schedules { get; set; }
