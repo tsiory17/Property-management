@@ -1,68 +1,43 @@
-﻿
-using ManageProperty.Data;
-using ManageProperty.Models;
+﻿using ManageProperty.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ManageProperty.Controllers
 {
     public class AccountController : Controller
     {
-        protected readonly EstateDbContext _d;
-        public AccountController(EstateDbContext d)
+        private readonly IAccountService _service;
+
+        public AccountController(IAccountService service)
         {
-            _d = d;
+            _service = service;
         }
+
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Login(String account, String Email, String password)
+        public IActionResult Login(string account, string email, string password)
         {
-            if (account == "owner")
+            var result = _service.ValidateCredentials(account, email, password);
+
+            if (result != null && result.Value.isValid)
             {
-                var owner = _d.Owners.FirstOrDefault(o => o.Email.ToLower() == Email.ToLower() && o.Password == password);
-                if (owner != null)
-                {
-                    HttpContext.Session.SetString("UserEmail", owner.Email);
-                    HttpContext.Session.SetInt32("UserId", owner.OwnerId);
-                    HttpContext.Session.SetString("UserRole", "Owner");
-                    HttpContext.Session.SetString("UserName", owner.FirstName + " " + owner.LastName);
-                    return RedirectToAction("MainPage", "Owners");
-                }
-            }
-            else if (account == "manager")
-            {
-                var manager = _d.Managers.FirstOrDefault(m => m.Email.ToLower() == Email.ToLower() && m.Password == password);
-                if (manager != null)
-                {
-                    HttpContext.Session.SetString("UserEmail", manager.Email);
-                    HttpContext.Session.SetInt32("UserId", manager.ManagerId);
-                    HttpContext.Session.SetString("UserRole", "Manager");
-                    HttpContext.Session.SetString("UserName", manager.FirstName + " " + manager.LastName);
-                    Console.WriteLine("Hello");
-                    return RedirectToAction("MainPage", "Managers");
-                }
-            }
-            else if (account == "tenant")
-            {
-                var tenant = _d.Tenants.FirstOrDefault(t => t.Email.ToLower() == Email.ToLower() && t.Password == password);
-                if (tenant != null)
-                {
-                    HttpContext.Session.SetString("UserEmail", tenant.Email);
-                    HttpContext.Session.SetInt32("UserId", tenant.TenantId);
-                    HttpContext.Session.SetString("UserRole", "Tenant");
-                    HttpContext.Session.SetString("UserName", tenant.FirstName + " " + tenant.LastName);
-                    return RedirectToAction("MainPage", "Tenants");
-                }
+                HttpContext.Session.SetString("UserEmail", result.Value.email);
+                HttpContext.Session.SetInt32("UserId", result.Value.userId);
+                HttpContext.Session.SetString("UserRole", result.Value.role);
+                HttpContext.Session.SetString("UserName", result.Value.userName);
+
+                return RedirectToAction("MainPage", $"{result.Value.role}s");
             }
 
             ViewBag.SelectedAccount = account;
-            ViewBag.LoginEror = "Invalid credentials, please try again ";
+            ViewBag.LoginEror = "Invalid credentials, please try again.";
 
             return View("Index");
         }
+
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();

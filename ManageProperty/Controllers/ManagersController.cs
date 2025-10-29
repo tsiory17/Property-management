@@ -1,197 +1,100 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using ManageProperty.Filters;
 using ManageProperty.Models;
-using ManageProperty.Data;
-using ManageProperty.Filters;
+using ManageProperty.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ManageProperty.Controllers
 {
-    //  [SessionCheckFilter("Owner" , "Manager")]
+    [SessionCheckFilter("Owner")] // only owners can access
     public class ManagersController : Controller
     {
-        private readonly EstateDbContext _context;
+        private readonly IManagerService _service;
 
-        public ManagersController(EstateDbContext context)
+        public ManagersController(IManagerService service)
         {
-            _context = context;
+            _service = service;
         }
 
         // GET: Managers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Managers.ToListAsync());
+            var managers = await _service.GetAllManagersAsync();
+            return View(managers);
         }
 
         // GET: Managers/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var manager = await _context.Managers
-                .FirstOrDefaultAsync(m => m.ManagerId == id);
-            if (manager == null)
-            {
-                return NotFound();
-            }
-
+            var manager = await _service.GetManagerByIdAsync(id);
+            if (manager == null) return NotFound();
             return View(manager);
         }
 
         // GET: Managers/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        public IActionResult Create() => View();
 
         // POST: Managers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ManagerId,RoleId,FirstName,LastName,Email,Password,Phone")] Manager manager)
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Manager manager)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(manager);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            if (!ModelState.IsValid) return View(manager);
 
-            return View(manager);
+            await _service.CreateManagerAsync(manager);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Managers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var manager = await _context.Managers.FindAsync(id);
-            if (manager == null)
-            {
-                return NotFound();
-            }
-
+            var manager = await _service.GetManagerByIdAsync(id);
+            if (manager == null) return NotFound();
             return View(manager);
         }
 
         // POST: Managers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ManagerId,RoleId,FirstName,LastName,Email,Password,Phone")] Manager manager)
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Manager manager)
         {
-            if (id != manager.ManagerId)
-            {
-                return NotFound();
-            }
+            if (id != manager.ManagerId) return NotFound();
+            if (!ModelState.IsValid) return View(manager);
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(manager);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ManagerExists(manager.ManagerId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
+            var updated = await _service.UpdateManagerAsync(manager);
+            if (!updated) return NotFound();
 
-            return View(manager);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Managers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var manager = await _context.Managers
-                .FirstOrDefaultAsync(m => m.ManagerId == id);
-            if (manager == null)
-            {
-                return NotFound();
-            }
-
+            var manager = await _service.GetManagerByIdAsync(id);
+            if (manager == null) return NotFound();
             return View(manager);
         }
 
         // POST: Managers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var manager = await _context.Managers.FindAsync(id);
-            if (manager != null)
-            {
-                _context.Managers.Remove(manager);
-            }
-
-            await _context.SaveChangesAsync();
+            await _service.DeleteManagerAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ManagerExists(int id)
+        // POST: Managers/Search
+        [HttpPost]
+        public IActionResult Search(string? searchTerm)
         {
-            return _context.Managers.Any(e => e.ManagerId == id);
+            var results = _service.SearchManagers(searchTerm);
+            if (!results.Any())
+                ViewBag.Message = "No manager found for the given search term.";
+
+            return View(results);
         }
 
         public IActionResult MainPage()
         {
-            var userName = HttpContext.Session.GetString("UserName");
-            ViewBag.UserName = userName;
+            ViewBag.UserName = HttpContext.Session.GetString("UserName");
             return View();
-        }
-
-        [HttpPost]
-        public IActionResult Search(String searchTerm)
-        {
-            {
-                var managerResults = (from m in _context.Managers
-                                      join r in _context.Roles on m.RoleId equals r.RoleId
-                                      where string.IsNullOrEmpty(searchTerm) ||
-                                      m.FirstName.Contains(searchTerm) ||
-                                      m.LastName.Contains(searchTerm)
-                                      select new UserViewModel
-                                      {
-                                          userId = m.ManagerId,
-                                          FirstName = m.FirstName,
-                                          LastName = m.LastName,
-                                          Email = m.Email,
-                                          Phone = m.Phone,
-                                          RoleName = r.RoleName
-                                      }).ToList();
-                if (!managerResults.Any())
-                {
-                    ViewBag.Message = "No manager found for the given search term.";
-                    return View(new List<UserViewModel>());
-                }
-                
-                return View(managerResults);
-            }
         }
     }
 }

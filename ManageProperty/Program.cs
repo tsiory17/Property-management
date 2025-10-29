@@ -2,6 +2,8 @@ using ManageProperty.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Options;
+using ManageProperty.Repositories;
+using ManageProperty.Services;
 
 namespace ManageProperty
 {
@@ -34,6 +36,13 @@ namespace ManageProperty
                     .AllowAnyMethod();
                 });
             });
+
+            // SERVICES REGISTRATIONS 
+            builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+            builder.Services.AddScoped<IAccountService, AccountService>();
+            builder.Services.AddScoped<IManagerRepository, ManagerRepository>();
+            builder.Services.AddScoped<IManagerService, ManagerService>();
+
 
             var app = builder.Build();
 
