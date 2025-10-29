@@ -29,7 +29,6 @@ namespace ManageProperty.Controllers
 
             var buildings = await _context.Buildings.Where(b => b.ManagerId == managerId).ToListAsync();
 
-
             var buildingIds = buildings.Select(b => b.BuildingId).ToList();
 
             // Retrieve the apartments in the buildings owned by the manager
@@ -39,7 +38,6 @@ namespace ManageProperty.Controllers
 
             // Return the apartments to the view
             return View(apartments);
-
         }
 
         // GET: Apartments/Details/5
@@ -67,8 +65,6 @@ namespace ManageProperty.Controllers
         }
 
         // POST: Apartments/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ApartmentId,BuildingId,NumberOfRooms,Rent,Status")] Apartment apartment)
@@ -98,9 +94,7 @@ namespace ManageProperty.Controllers
             return View(apartment);
         }
 
-        // POST: Apartments/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Apartments/Edit/
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ApartmentId,BuildingId,NumberOfRooms,Rent,Status")] Apartment apartment)
@@ -163,6 +157,7 @@ namespace ManageProperty.Controllers
             }
 
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -227,10 +222,10 @@ namespace ManageProperty.Controllers
             ViewBag.SortOptions = new SelectList(
                 new List<SelectListItem>
                 {
-        new SelectListItem { Text = "Price (Low to High)", Value = "price_asc" },
-        new SelectListItem { Text = "Price (High to Low)", Value = "price_desc" },
-        new SelectListItem { Text = "Rooms (Few to Many)", Value = "rooms_asc" },
-        new SelectListItem { Text = "Rooms (Many to Few)", Value = "rooms_desc" }
+                    new SelectListItem { Text = "Price (Low to High)", Value = "price_asc" },
+                    new SelectListItem { Text = "Price (High to Low)", Value = "price_desc" },
+                    new SelectListItem { Text = "Rooms (Few to Many)", Value = "rooms_asc" },
+                    new SelectListItem { Text = "Rooms (Many to Few)", Value = "rooms_desc" }
                 },
                 "Value", // Value property for the SelectList
                 "Text",  // Text property for the SelectList
@@ -264,7 +259,6 @@ namespace ManageProperty.Controllers
                     apartments = apartments.OrderBy(a => a.Rent); // Default sorting
                     break;
             }
-
             // Return the sorted list of apartments to the view
             return View(apartments.ToList());
 
@@ -298,12 +292,5 @@ namespace ManageProperty.Controllers
 
             return View(apartment);
         }
-
-
-
-
-
-
-
     }
 }

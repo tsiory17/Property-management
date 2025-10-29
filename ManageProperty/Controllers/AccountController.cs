@@ -14,7 +14,6 @@ namespace ManageProperty.Controllers
         }
         public IActionResult Index()
         {
-
             return View();
         }
 
@@ -31,9 +30,7 @@ namespace ManageProperty.Controllers
                     HttpContext.Session.SetString("UserRole", "Owner");
                     HttpContext.Session.SetString("UserName", owner.FirstName + " " + owner.LastName);
                     return RedirectToAction("MainPage", "Owners");
-
                 }
-
             }
             else if (account == "manager")
             {
@@ -63,13 +60,13 @@ namespace ManageProperty.Controllers
 
             ViewBag.SelectedAccount = account;
             ViewBag.LoginEror = "Invalid credentials, please try again ";
+
             return View("Index");
         }
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
             return RedirectToAction("Index");
-
         }
     }
 }
