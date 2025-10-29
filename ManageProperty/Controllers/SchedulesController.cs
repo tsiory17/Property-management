@@ -153,8 +153,6 @@ namespace ManageProperty.Controllers
         {
             return _context.Schedules.Any(e => e.ScheduleId == id);
         }
-
-
         public void GenerateWeeklySchedules(int managerId)
         {
             var startDate = DateOnly.FromDateTime(DateTime.Now.Date); // Starting from today
@@ -194,7 +192,5 @@ namespace ManageProperty.Controllers
             GenerateWeeklySchedules(managerId);
             return RedirectToAction(nameof(Index), new { managerId });
         }
-
-
     }
 }

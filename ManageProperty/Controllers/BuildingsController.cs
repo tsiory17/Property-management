@@ -57,8 +57,6 @@ namespace ManageProperty.Controllers
         }
 
         // POST: Buildings/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BuildingId,OwnerId,ManagerId,Address,City,Zip")] Building building)
@@ -89,8 +87,6 @@ namespace ManageProperty.Controllers
         }
 
         // POST: Buildings/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("BuildingId,OwnerId,ManagerId,Address,City,Zip")] Building building)

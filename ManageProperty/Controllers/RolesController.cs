@@ -50,8 +50,6 @@ namespace ManageProperty.Controllers
         }
 
         // POST: Roles/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RoleId,RoleName")] Role role)
@@ -64,7 +62,6 @@ namespace ManageProperty.Controllers
             }
             return View(role);
         }
-
         // GET: Roles/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -82,8 +79,6 @@ namespace ManageProperty.Controllers
         }
 
         // POST: Roles/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("RoleId,RoleName")] Role role)
@@ -148,7 +143,6 @@ namespace ManageProperty.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool RoleExists(int id)
         {
             return _context.Roles.Any(e => e.RoleId == id);

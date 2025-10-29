@@ -16,8 +16,6 @@ public partial class EstateDbContext : DbContext
     {
     }
 
-
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Message>(entity =>

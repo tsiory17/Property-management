@@ -3,7 +3,6 @@
     public class AppointmentDetailsModel
     {
         public int AppointmentId { get; set; }
-
         public String? TenantName { get; set; }
         public int ScheduleId { get; set; }
         public int TenantId { get; set; }

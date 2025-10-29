@@ -67,8 +67,6 @@ namespace ManageProperty.Controllers
         }
 
         // POST: Messages/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MessageId,SenderId,ReceiverId,Content,SentAt")] Message message)
@@ -95,12 +93,11 @@ namespace ManageProperty.Controllers
             {
                 return NotFound();
             }
+
             return View(message);
         }
 
         // POST: Messages/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("MessageId,SenderId,ReceiverId,Content,SentAt")] Message message)
@@ -132,7 +129,6 @@ namespace ManageProperty.Controllers
             }
             return View(message);
         }
-
         // GET: Messages/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -198,13 +194,10 @@ namespace ManageProperty.Controllers
             return RedirectToAction(nameof(ViewReceivedMessagesForTenants));
         }
 
-
-
         private bool MessageExists(int id)
         {
             return _context.Messages.Any(e => e.MessageId == id);
         }
-
 
         // Method for sending messages (For Tenants)
         [HttpGet]
@@ -241,7 +234,6 @@ namespace ManageProperty.Controllers
                 ViewBag.Content = content;
 
                 return View();
-
             }
 
             var message = new Message
@@ -260,20 +252,18 @@ namespace ManageProperty.Controllers
             }
 
             var managerList = _context.Managers
-    .Select(m => new
-    {
-        ManagerId = m.ManagerId,
-        ManagerName = m.FirstName + " " + m.LastName
-    })
-    .ToList();
+                .Select(m => new
+                {
+                    ManagerId = m.ManagerId,
+                    ManagerName = m.FirstName + " " + m.LastName
+                })
+                .ToList();
 
             ViewBag.Managers = new SelectList(managerList, "ManagerId", "ManagerName");
-
             // Ensure the message content is retained
             ViewBag.Content = content;
 
             return View(message);
-
         }
 
         // Method for replying to messages (For Managers)
@@ -347,7 +337,6 @@ namespace ManageProperty.Controllers
             return View(replyMessage);
         }
 
-
         [HttpPost]
         public IActionResult Reply(int originalMessageId, string content)
         {
@@ -419,7 +408,6 @@ namespace ManageProperty.Controllers
 
             return View(messages.ToList());
         }
-
         // Method to view received messages
         public IActionResult ViewReceivedMessages()
         {
@@ -446,7 +434,6 @@ namespace ManageProperty.Controllers
 
             return View(messages.ToList());
         }
-
         // Method to view received messages for tenants
         public IActionResult ViewReceivedMessagesForTenants()
         {
@@ -494,10 +481,6 @@ namespace ManageProperty.Controllers
 
             return View(messageList);
         }
-
-
-
     }
-
 }
 

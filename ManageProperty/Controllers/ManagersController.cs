@@ -64,6 +64,7 @@ namespace ManageProperty.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(manager);
         }
 
@@ -80,6 +81,7 @@ namespace ManageProperty.Controllers
             {
                 return NotFound();
             }
+
             return View(manager);
         }
 
@@ -115,6 +117,7 @@ namespace ManageProperty.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(manager);
         }
 
@@ -163,7 +166,6 @@ namespace ManageProperty.Controllers
             return View();
         }
 
-
         [HttpPost]
         public IActionResult Search(String searchTerm)
         {
@@ -187,8 +189,8 @@ namespace ManageProperty.Controllers
                     ViewBag.Message = "No manager found for the given search term.";
                     return View(new List<UserViewModel>());
                 }
+                
                 return View(managerResults);
-
             }
         }
     }

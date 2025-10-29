@@ -43,7 +43,6 @@ namespace ManageProperty.Controllers
             return View(appointment);
         }
 
-
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -60,8 +59,6 @@ namespace ManageProperty.Controllers
         }
 
         // POST: Appointments/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AppointmentId,ScheduleId,TenantId,Status")] Appointment appointment)
@@ -91,6 +88,7 @@ namespace ManageProperty.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(appointment);
         }
 
@@ -132,8 +130,6 @@ namespace ManageProperty.Controllers
             return _context.Appointments.Any(e => e.AppointmentId == id);
         }
 
-
-
         // Method to show available schedules for booking for the tenant
         public IActionResult BookAppointment(int buildingId)
         {
@@ -157,21 +153,6 @@ namespace ManageProperty.Controllers
         [HttpPost]
         public IActionResult Create(Appointment appointment)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    var schedule = _context.Schedules.Find(appointment.ScheduleId);
-            //    if (schedule != null && schedule.Status == "available")
-            //    {
-            //        appointment.TenantId = HttpContext.Session.GetInt32("TenantId").GetValueOrDefault();
-            //        schedule.Status = "booked";
-            //        appointment.Status = "pending";
-            //        _context.Update(schedule);
-            //        _context.Add(appointment);
-            //        _context.SaveChanges();
-            //        return RedirectToAction(nameof(TenantAppointments), new { tenantId = appointment.TenantId });
-            //    }
-            //}
-            //return View(appointment);
             if (ModelState.IsValid)
             {
                 var schedule = _context.Schedules.Find(appointment.ScheduleId);
@@ -201,15 +182,12 @@ namespace ManageProperty.Controllers
                     return RedirectToAction(nameof(TenantAppointments), new { tenantId = appointment.TenantId });
                 }
             }
-
             // If we reach here, return the view with the model
             return View(appointment);
-
         }
         public IActionResult TenantAppointments(int tenantId)
         {
             var sessionTenantId = HttpContext.Session.GetInt32("UserId"); // Get the tenant's ID from the session
-
             // Redirect to login if tenant ID is not in the session
             if (sessionTenantId == null)
             {
@@ -235,30 +213,6 @@ namespace ManageProperty.Controllers
             // Return the appointments list to the view
             return View(appointments.ToList());
         }
-
-        // Method to list tenant's appointments
-        //public IActionResult TenantAppointments(int tenantId)
-        //{
-
-        //    var appointments = from a in _context.Appointments
-        //                       join s in _context.Schedules on a.ScheduleId equals s.ScheduleId
-        //                       where a.TenantId == tenantId
-
-        //                       select new AppointmentDetailsModel
-        //                       {
-        //                           AppointmentId = a.AppointmentId,
-        //                           ScheduleId = a.ScheduleId,
-        //                           TenantId = a.TenantId,
-        //                           Status = a.Status,
-        //                           Date = s.Date,
-        //                           StartTime = s.StartTime,
-        //                           EndTime = s.EndTime
-        //                       };
-
-        //    return View(appointments.ToList());
-
-
-        //}
 
         [HttpPost]
         public IActionResult UpdateStatus(int appointmentId, string status)
@@ -317,8 +271,6 @@ namespace ManageProperty.Controllers
                                };
 
             return View(appointments.ToList());
-
-
         }
 
         public IActionResult ShowApprovedAppointments()
@@ -362,8 +314,5 @@ namespace ManageProperty.Controllers
 
             return View(appointment);
         }
-
-
-
     }
 }
