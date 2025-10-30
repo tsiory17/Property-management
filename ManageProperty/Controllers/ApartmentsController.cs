@@ -1,294 +1,132 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ManageProperty.Models;
+using ManageProperty.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using ManageProperty.Models;
-using ManageProperty.Data;
 
 namespace ManageProperty.Controllers
 {
     public class ApartmentsController : Controller
     {
-        private readonly EstateDbContext _context;
+        private readonly IApartmentService _service;
 
-        public ApartmentsController(EstateDbContext context)
+        public ApartmentsController(IApartmentService service)
         {
-            _context = context;
+            _service = service;
         }
 
         // GET: Apartments
         public async Task<IActionResult> Index()
         {
-
             var managerId = HttpContext.Session.GetInt32("UserId");
+            if (managerId == null)
+                return RedirectToAction("Login", "Account");
 
-            if (managerId == null) { return RedirectToAction("Login", "Account"); }
-
-            var buildings = await _context.Buildings.Where(b => b.ManagerId == managerId).ToListAsync();
-
-            var buildingIds = buildings.Select(b => b.BuildingId).ToList();
-
-            // Retrieve the apartments in the buildings owned by the manager
-            var apartments = await _context.Apartments
-                .Where(a => buildingIds.Contains(a.BuildingId))
-                .ToListAsync();
-
-            // Return the apartments to the view
+            var apartments = await _service.GetApartmentsForManagerAsync(managerId.Value);
             return View(apartments);
         }
 
         // GET: Apartments/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var apartment = await _context.Apartments
-                .FirstOrDefaultAsync(m => m.ApartmentId == id);
-            if (apartment == null)
-            {
-                return NotFound();
-            }
+            var apartment = await _service.GetApartmentByIdAsync(id);
+            if (apartment == null) return NotFound();
 
             return View(apartment);
         }
 
         // GET: Apartments/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        public IActionResult Create() => View();
 
         // POST: Apartments/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ApartmentId,BuildingId,NumberOfRooms,Rent,Status")] Apartment apartment)
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Apartment apartment)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(apartment);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(SearchByStatus));
-            }
-            return View(apartment);
+            if (!ModelState.IsValid) return View(apartment);
+
+            await _service.CreateApartmentAsync(apartment);
+            return RedirectToAction(nameof(SearchByStatus));
         }
 
         // GET: Apartments/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var apartment = await _service.GetApartmentByIdAsync(id);
+            if (apartment == null) return NotFound();
 
-            var apartment = await _context.Apartments.FindAsync(id);
-            if (apartment == null)
-            {
-                return NotFound();
-            }
             return View(apartment);
         }
 
-        // POST: Apartments/Edit/
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ApartmentId,BuildingId,NumberOfRooms,Rent,Status")] Apartment apartment)
+        // POST: Apartments/Edit
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Apartment apartment)
         {
             if (id != apartment.ApartmentId)
-            {
                 return NotFound();
-            }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(apartment);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ApartmentExists(apartment.ApartmentId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(apartment);
-        }
+            if (!ModelState.IsValid)
+                return View(apartment);
 
-        // GET: Apartments/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var apartment = await _context.Apartments
-                .FirstOrDefaultAsync(m => m.ApartmentId == id);
-            if (apartment == null)
-            {
-                return NotFound();
-            }
-
-            return View(apartment);
-        }
-
-        // POST: Apartments/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var apartment = await _context.Apartments.FindAsync(id);
-            if (apartment != null)
-            {
-                _context.Apartments.Remove(apartment);
-            }
-
-            await _context.SaveChangesAsync();
+            var updated = await _service.UpdateApartmentAsync(apartment);
+            if (!updated) return NotFound();
 
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ApartmentExists(int id)
+        // GET: Apartments/Delete/5
+        public async Task<IActionResult> Delete(int id)
         {
-            return _context.Apartments.Any(e => e.ApartmentId == id);
+            var apartment = await _service.GetApartmentByIdAsync(id);
+            if (apartment == null) return NotFound();
+
+            return View(apartment);
         }
 
-        public async Task<IActionResult> SearchByStatus(string status)
+        // POST: Apartments/Delete
+        [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            // Retrieve the manager's ID from the session
+            await _service.DeleteApartmentAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Apartments/SearchByStatus
+        public async Task<IActionResult> SearchByStatus(string? status)
+        {
             var managerId = HttpContext.Session.GetInt32("UserId");
-
-            // Redirect to login if the manager ID is not in the session
             if (managerId == null)
-            {
                 return RedirectToAction("Login", "Account");
-            }
 
-            // Get the buildings managed by the logged-in manager
-            var buildings = await _context.Buildings
-                .Where(b => b.ManagerId == managerId)
-                .ToListAsync();
-
-            // Extract building IDs
-            var buildingIds = buildings.Select(b => b.BuildingId).ToList();
-
-            // Query apartments associated with the manager's buildings
-            var apartmentsQuery = _context.Apartments
-                .Where(a => buildingIds.Contains(a.BuildingId));
-
-            // Filter apartments by status if provided
-            if (!string.IsNullOrEmpty(status))
-            {
-                apartmentsQuery = apartmentsQuery.Where(
-                    a => a.Status.ToLower() == status.ToLower());
-            }
-
-            // Execute the query to retrieve the apartments
-            var apartments = await apartmentsQuery.ToListAsync();
-
-            // Create a distinct list of statuses for the dropdown
-            var statusList = await _context.Apartments
-                .Where(a => buildingIds.Contains(a.BuildingId))
-                .Select(a => a.Status)
-                .Distinct()
-                .ToListAsync();
-
-            // Pass the status list to the view
+            var apartments = await _service.SearchByStatusAsync(managerId.Value, status);
+            var statusList = await _service.GetStatusesAsync(managerId.Value);
             ViewBag.StatusList = new SelectList(statusList);
-
-            // Return the filtered apartments to the view
             return View(apartments);
         }
 
-        public IActionResult Sort(string sortOrder)
+        // GET: Apartments/Sort
+        public async Task<IActionResult> Sort(string sortOrder)
         {
-            // Store the current sort order in ViewBag
             ViewBag.CurrentSort = sortOrder;
-
-            // Create a list of sorting options and pass it to ViewBag
             ViewBag.SortOptions = new SelectList(
                 new List<SelectListItem>
                 {
-                    new SelectListItem { Text = "Price (Low to High)", Value = "price_asc" },
-                    new SelectListItem { Text = "Price (High to Low)", Value = "price_desc" },
-                    new SelectListItem { Text = "Rooms (Few to Many)", Value = "rooms_asc" },
-                    new SelectListItem { Text = "Rooms (Many to Few)", Value = "rooms_desc" }
+                    new() { Text = "Price (Low to High)", Value = "price_asc" },
+                    new() { Text = "Price (High to Low)", Value = "price_desc" },
+                    new() { Text = "Rooms (Few to Many)", Value = "rooms_asc" },
+                    new() { Text = "Rooms (Many to Few)", Value = "rooms_desc" }
                 },
-                "Value", // Value property for the SelectList
-                "Text",  // Text property for the SelectList
-                sortOrder // Selected value
+                "Value", "Text", sortOrder
             );
 
-            // Fetch all apartments
-            var apartments = from a in _context.Apartments
-                             select a;
-
-            // Apply sorting based on the sortOrder parameter
-            switch (sortOrder)
-            {
-                case "price_asc":
-                    apartments = apartments.OrderBy(a => a.Rent);
-                    break;
-
-                case "price_desc":
-                    apartments = apartments.OrderByDescending(a => a.Rent);
-                    break;
-
-                case "rooms_asc":
-                    apartments = apartments.OrderBy(a => a.NumberOfRooms);
-                    break;
-
-                case "rooms_desc":
-                    apartments = apartments.OrderByDescending(a => a.NumberOfRooms);
-                    break;
-
-                default:
-                    apartments = apartments.OrderBy(a => a.Rent); // Default sorting
-                    break;
-            }
-            // Return the sorted list of apartments to the view
-            return View(apartments.ToList());
-
+            var apartments = await _service.SortApartmentsAsync(sortOrder);
+            return View(apartments);
         }
-        public IActionResult DetailsTenant(int? id)
+
+        // GET: Apartments/DetailsTenant/5
+        public IActionResult DetailsTenant(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var apartment = (from a in _context.Apartments
-                             join b in _context.Buildings on a.BuildingId equals b.BuildingId
-                             where a.ApartmentId == id
-                             select new ApartmentViewModel
-                             {
-                                 ApartmentId = a.ApartmentId,
-                                 BuildingId = b.BuildingId,
-                                 Rent = a.Rent,
-                                 NumberOfRooms = a.NumberOfRooms,
-                                 Status = a.Status,
-                                 Address = b.Address,
-                                 City = b.City,
-                                 ZipCode = b.Zip
-                             }).FirstOrDefault();
-
+            var apartment = _service.GetApartmentWithBuilding(id);
             if (apartment == null)
-            {
                 return NotFound();
-            }
 
             return View(apartment);
         }
