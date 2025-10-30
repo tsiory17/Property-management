@@ -1,160 +1,96 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ManageProperty.Models;
+using ManageProperty.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using ManageProperty.Models;
-using ManageProperty.Data;
 
 namespace ManageProperty.Controllers
 {
     public class BuildingsController : Controller
     {
-        private readonly EstateDbContext _context;
+        private readonly IBuildingService _service;
 
-        public BuildingsController(EstateDbContext context)
+        public BuildingsController(IBuildingService service)
         {
-            _context = context;
+            _service = service;
         }
 
         // GET: Buildings
         public async Task<IActionResult> Index()
         {
-            // return View(await _context.Buildings.ToListAsync());
             var managerId = HttpContext.Session.GetInt32("UserId");
-            // Get the manager's ID from the session
-            if (managerId == null) { return RedirectToAction("Login", "Account"); }
-            // Redirect to login if manager ID is not in the session }
-            // Query buildings associated with the manager's ID
-            var buildings = await _context.Buildings.Where(b => b.ManagerId == managerId).ToListAsync();
+            if (managerId == null)
+                return RedirectToAction("Login", "Account");
+
+            var buildings = await _service.GetBuildingsForManagerAsync(managerId.Value);
             return View(buildings);
         }
 
         // GET: Buildings/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var building = await _context.Buildings
-                .FirstOrDefaultAsync(m => m.BuildingId == id);
+            var building = await _service.GetBuildingByIdAsync(id);
             if (building == null)
-            {
                 return NotFound();
-            }
 
             return View(building);
         }
 
         // GET: Buildings/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        public IActionResult Create() => View();
 
         // POST: Buildings/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BuildingId,OwnerId,ManagerId,Address,City,Zip")] Building building)
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Building building)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(building);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(building);
+            if (!ModelState.IsValid)
+                return View(building);
+
+            await _service.CreateBuildingAsync(building);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Buildings/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var building = await _context.Buildings.FindAsync(id);
+            var building = await _service.GetBuildingByIdAsync(id);
             if (building == null)
-            {
                 return NotFound();
-            }
+
             return View(building);
         }
 
         // POST: Buildings/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BuildingId,OwnerId,ManagerId,Address,City,Zip")] Building building)
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Building building)
         {
             if (id != building.BuildingId)
-            {
                 return NotFound();
-            }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(building);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BuildingExists(building.BuildingId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(building);
+            if (!ModelState.IsValid)
+                return View(building);
+
+            var updated = await _service.UpdateBuildingAsync(building);
+            if (!updated)
+                return NotFound();
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Buildings/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var building = await _context.Buildings
-                .FirstOrDefaultAsync(m => m.BuildingId == id);
+            var building = await _service.GetBuildingByIdAsync(id);
             if (building == null)
-            {
                 return NotFound();
-            }
 
             return View(building);
         }
 
         // POST: Buildings/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var building = await _context.Buildings.FindAsync(id);
-            if (building != null)
-            {
-                _context.Buildings.Remove(building);
-            }
-
-            await _context.SaveChangesAsync();
+            await _service.DeleteBuildingAsync(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool BuildingExists(int id)
-        {
-            return _context.Buildings.Any(e => e.BuildingId == id);
         }
     }
 }

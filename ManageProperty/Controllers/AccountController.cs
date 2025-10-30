@@ -20,7 +20,10 @@ namespace ManageProperty.Controllers
         [HttpPost]
         public IActionResult Login(string account, string email, string password)
         {
-            var result = _service.ValidateCredentials(account, email, password);
+            var result = _service.ValidateCredentials(account, email, password);Console.WriteLine(result == null 
+    ? "Result is NULL" 
+    : $"Result: {result.Value.role} / {result.Value.email}");
+
 
             if (result != null && result.Value.isValid)
             {
@@ -31,6 +34,7 @@ namespace ManageProperty.Controllers
 
                 return RedirectToAction("MainPage", $"{result.Value.role}s");
             }
+            
 
             ViewBag.SelectedAccount = account;
             ViewBag.LoginEror = "Invalid credentials, please try again.";

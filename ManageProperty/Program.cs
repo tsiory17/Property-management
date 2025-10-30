@@ -42,6 +42,10 @@ namespace ManageProperty
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<IManagerRepository, ManagerRepository>();
             builder.Services.AddScoped<IManagerService, ManagerService>();
+            builder.Services.AddScoped<ITenantRepository, TenantRepository>();
+            builder.Services.AddScoped<ITenantService, TenantService>();
+            builder.Services.AddScoped<IBuildingRepository, BuildingRepository>();
+            builder.Services.AddScoped<IBuildingService, BuildingService>();
 
 
             var app = builder.Build();

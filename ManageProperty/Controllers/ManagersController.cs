@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ManageProperty.Controllers
 {
-    [SessionCheckFilter("Owner")] // only owners can access
+    // [SessionCheckFilter("Owner")] // only owners can access
     public class ManagersController : Controller
     {
         private readonly IManagerService _service;
@@ -90,7 +90,7 @@ namespace ManageProperty.Controllers
 
             return View(results);
         }
-
+        [SessionCheckFilter("Manager")]
         public IActionResult MainPage()
         {
             ViewBag.UserName = HttpContext.Session.GetString("UserName");

@@ -1,213 +1,118 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ManageProperty.Models;
+using ManageProperty.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using ManageProperty.Models;
-using ManageProperty.Data;
+using ManageProperty.Filters;
 
 namespace ManageProperty.Controllers
 {
     public class TenantsController : Controller
     {
-        private readonly EstateDbContext _context;
+        private readonly ITenantService _service;
 
-        public TenantsController(EstateDbContext context)
+        public TenantsController(ITenantService service)
         {
-            _context = context;
+            _service = service;
         }
 
         // GET: Tenants
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Tenants.ToListAsync());
+            var tenants = await _service.GetAllTenantsAsync();
+            return View(tenants);
         }
 
         // GET: Tenants/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tenant = await _context.Tenants
-                .FirstOrDefaultAsync(m => m.TenantId == id);
-            if (tenant == null)
-            {
-                return NotFound();
-            }
-
+            var tenant = await _service.GetTenantByIdAsync(id);
+            if (tenant == null) return NotFound();
             return View(tenant);
         }
 
         // GET: Tenants/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        public IActionResult Create() => View();
 
         // POST: Tenants/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TenantId,RoleId,FirstName,LastName,Email,Password,Phone")] Tenant tenant)
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Tenant tenant)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(tenant);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(tenant);
+            if (!ModelState.IsValid) return View(tenant);
+
+            await _service.CreateTenantAsync(tenant);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Tenants/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tenant = await _context.Tenants.FindAsync(id);
-            if (tenant == null)
-            {
-                return NotFound();
-            }
+            var tenant = await _service.GetTenantByIdAsync(id);
+            if (tenant == null) return NotFound();
             return View(tenant);
         }
 
         // POST: Tenants/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TenantId,RoleId,FirstName,LastName,Email,Password,Phone")] Tenant tenant)
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Tenant tenant)
         {
-            if (id != tenant.TenantId)
-            {
-                return NotFound();
-            }
+            if (id != tenant.TenantId) return NotFound();
+            if (!ModelState.IsValid) return View(tenant);
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(tenant);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TenantExists(tenant.TenantId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(tenant);
+            var updated = await _service.UpdateTenantAsync(tenant);
+            if (!updated) return NotFound();
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Tenants/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tenant = await _context.Tenants
-                .FirstOrDefaultAsync(m => m.TenantId == id);
-            if (tenant == null)
-            {
-                return NotFound();
-            }
-
+            var tenant = await _service.GetTenantByIdAsync(id);
+            if (tenant == null) return NotFound();
             return View(tenant);
         }
 
         // POST: Tenants/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tenant = await _context.Tenants.FindAsync(id);
-            if (tenant != null)
-            {
-                _context.Tenants.Remove(tenant);
-            }
-
-            await _context.SaveChangesAsync();
+            await _service.DeleteTenantAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TenantExists(int id)
+        // POST: Tenants/Search
+        [HttpPost]
+        public IActionResult Search(string? searchTerm)
         {
-            return _context.Tenants.Any(e => e.TenantId == id);
+            var results = _service.SearchTenants(searchTerm);
+            if (!results.Any())
+                ViewBag.Message = "No tenant found for the given search term.";
+
+            return View(results);
         }
 
+        // GET: Tenants/Register
+        public IActionResult Register() => View();
+
+        // POST: Tenants/Register
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(Tenant tenant)
+        {
+            if (!ModelState.IsValid) return View(tenant);
+
+            var success = await _service.RegisterTenantAsync(tenant);
+            if (!success)
+            {
+                ViewBag.Message = "Email already exists. Please use another.";
+                return View(tenant);
+            }
+
+            return RedirectToAction("Login", "Account");
+        }
+        [SessionCheckFilter("Tenant")]
         public IActionResult MainPage()
         {
-            var userName = HttpContext.Session.GetString("UserName");
-            ViewBag.UserName = userName;
+            ViewBag.UserName = HttpContext.Session.GetString("UserName");
             return View();
         }
-
-        [HttpPost]
-        public IActionResult Search(String searchTerm)
-        {
-
-            var tenantResults = (from t in _context.Tenants
-                                 join r in _context.Roles on t.RoleId equals r.RoleId
-                                 where
-                                 t.FirstName.Contains(searchTerm) ||
-                                 t.LastName.Contains(searchTerm)
-
-                                 select new UserViewModel
-                                 {
-                                     userId = t.TenantId,
-                                     FirstName = t.FirstName,
-                                     LastName = t.LastName,
-                                     Email = t.Email,
-                                     Phone = t.Phone,
-                                     RoleName = r.RoleName
-                                 }).ToList();
-
-            if (!tenantResults.Any())
-            {
-                ViewBag.Message = "No Tenant found for the given search term.";
-                return View(new List<UserViewModel>());
-            }
-            return View(tenantResults);
-
-        }
-
-
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        // POST: Tenants/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register([Bind("TenantId,RoleId,FirstName,LastName,Email,Password,Phone")] Tenant tenant)
-        {
-            if (ModelState.IsValid)
-            {
-
-                _context.Add(tenant);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Login", "Account");
-            }
-            return View(tenant);
-        }
-
     }
 }
