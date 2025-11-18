@@ -11,6 +11,6 @@ public partial class Building
     public string Address { get; set; } = null!;
     public string City { get; set; } = null!;
     public string Zip { get; set; } = null!;
-    public string BuildingImageUrl { get; set; } = null!;
-    public ICollection<Apartment> Apartments { get; set; } //Navigation property 
+    public string? BuildingImageUrl { get; set; }
+    public ICollection<Apartment> Apartments { get; set; } = new List<Apartment>(); //Navigation property //
 }

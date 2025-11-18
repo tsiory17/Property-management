@@ -1,9 +1,10 @@
 ﻿using ManageProperty.Models;
 using ManageProperty.Services;
 using Microsoft.AspNetCore.Mvc;
-
+using ManageProperty.Filters;
 namespace ManageProperty.Controllers
 {
+    [SessionCheckFilter("Manager")]
     public class BuildingsController : Controller
     {
         private readonly IBuildingService _service;
@@ -42,7 +43,14 @@ namespace ManageProperty.Controllers
         public async Task<IActionResult> Create(Building building)
         {
             if (!ModelState.IsValid)
+            {
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine($"Validation error: {error.ErrorMessage}");
+                }
+
                 return View(building);
+            }
 
             await _service.CreateBuildingAsync(building);
             return RedirectToAction(nameof(Index));

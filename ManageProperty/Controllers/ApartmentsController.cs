@@ -2,9 +2,10 @@
 using ManageProperty.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using ManageProperty.Filters;
 namespace ManageProperty.Controllers
 {
+    [SessionCheckFilter("Manager")]
     public class ApartmentsController : Controller
     {
         private readonly IApartmentService _service;
@@ -90,6 +91,7 @@ namespace ManageProperty.Controllers
         }
 
         // GET: Apartments/SearchByStatus
+        [SessionCheckFilter("Manager", "Tenant")]
         public async Task<IActionResult> SearchByStatus(string? status)
         {
             var managerId = HttpContext.Session.GetInt32("UserId");
@@ -103,6 +105,7 @@ namespace ManageProperty.Controllers
         }
 
         // GET: Apartments/Sort
+        [SessionCheckFilter("Manager", "Tenant")]
         public async Task<IActionResult> Sort(string sortOrder)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -122,6 +125,7 @@ namespace ManageProperty.Controllers
         }
 
         // GET: Apartments/DetailsTenant/5
+        [SessionCheckFilter("Tenant")]
         public IActionResult DetailsTenant(int id)
         {
             var apartment = _service.GetApartmentWithBuilding(id);

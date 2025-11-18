@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ManageProperty.Controllers
 {
-    // [SessionCheckFilter("Owner")] // only owners can access
+     //Owner will access the majority of the actions
     public class ManagersController : Controller
     {
         private readonly IManagerService _service;
@@ -16,6 +16,7 @@ namespace ManageProperty.Controllers
         }
 
         // GET: Managers
+        [SessionCheckFilter("Owner")]
         public async Task<IActionResult> Index()
         {
             var managers = await _service.GetAllManagersAsync();
@@ -23,6 +24,7 @@ namespace ManageProperty.Controllers
         }
 
         // GET: Managers/Details/5
+        [SessionCheckFilter("Owner")]
         public async Task<IActionResult> Details(int id)
         {
             var manager = await _service.GetManagerByIdAsync(id);
@@ -31,9 +33,11 @@ namespace ManageProperty.Controllers
         }
 
         // GET: Managers/Create
+        [SessionCheckFilter("Owner")]
         public IActionResult Create() => View();
 
         // POST: Managers/Create
+        [SessionCheckFilter("Owner")]
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Manager manager)
         {
@@ -44,6 +48,7 @@ namespace ManageProperty.Controllers
         }
 
         // GET: Managers/Edit/5
+        [SessionCheckFilter("Owner")]
         public async Task<IActionResult> Edit(int id)
         {
             var manager = await _service.GetManagerByIdAsync(id);
@@ -52,6 +57,7 @@ namespace ManageProperty.Controllers
         }
 
         // POST: Managers/Edit/5
+        [SessionCheckFilter("Owner")]
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Manager manager)
         {
@@ -65,6 +71,7 @@ namespace ManageProperty.Controllers
         }
 
         // GET: Managers/Delete/5
+        [SessionCheckFilter("Owner")]
         public async Task<IActionResult> Delete(int id)
         {
             var manager = await _service.GetManagerByIdAsync(id);
@@ -73,6 +80,7 @@ namespace ManageProperty.Controllers
         }
 
         // POST: Managers/Delete/5
+        [SessionCheckFilter("Owner")]
         [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
@@ -82,6 +90,7 @@ namespace ManageProperty.Controllers
 
         // POST: Managers/Search
         [HttpPost]
+        [SessionCheckFilter("Owner")]
         public IActionResult Search(string? searchTerm)
         {
             var results = _service.SearchManagers(searchTerm);
