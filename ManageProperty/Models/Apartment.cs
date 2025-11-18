@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace ManageProperty.Models;
 
@@ -16,5 +17,6 @@ public partial class Apartment
     public string Status { get; set; } = null!;
     //Collection of images 
     public ICollection<ApartmentImage> ApartmentImages { get; set; } = new List<ApartmentImage>();
+   [ValidateNever]
     public Building Building { get; set; } //Navigation Link 
 }
